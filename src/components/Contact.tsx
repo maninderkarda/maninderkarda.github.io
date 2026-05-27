@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, FileDown } from "lucide-react";
+import { MapPin, Phone, Mail, FileDown, LucideIcon } from "lucide-react";
 
 interface ContactCard {
   title: string;
   value: string;
   subText: string;
-  icon: any;
+  icon: LucideIcon;
   link: string;
   download?: boolean;
   color: string;

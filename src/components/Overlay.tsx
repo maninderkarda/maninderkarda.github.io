@@ -35,7 +35,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
             className="text-5xl md:text-8xl font-black tracking-tight text-white uppercase drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
           >
             Maninder Karda
@@ -43,7 +43,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
             className="text-2xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 tracking-wide uppercase drop-shadow-md py-2"
           >
             Data Analyst | 12+ Years of Experience
