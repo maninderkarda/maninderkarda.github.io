@@ -7,20 +7,20 @@ interface OverlayProps {
 }
 
 export default function Overlay({ scrollYProgress }: OverlayProps) {
-  // --- Section 1 (0% to 22% Scroll Progress) ---
-  // Renders in center
-  const s1Opacity = useTransform(scrollYProgress, [0, 0.15, 0.22], [1, 1, 0]);
-  const s1Y = useTransform(scrollYProgress, [0, 0.22], [0, -60]);
+  // --- Section 1 (Start & End) ---
+  // Renders in center initially, disappears, and reappears at the end
+  const s1Opacity = useTransform(scrollYProgress, [0, 0.15, 0.20, 0.85, 0.90, 1], [1, 1, 0, 0, 1, 1]);
+  const s1Y = useTransform(scrollYProgress, [0, 0.15, 0.20, 0.85, 0.90, 1], [0, 0, -50, 50, 0, 0]);
 
-  // --- Section 2 (28% to 52% Scroll Progress) ---
+  // --- Section 2 (Middle First) ---
   // Renders left-aligned
-  const s2Opacity = useTransform(scrollYProgress, [0.22, 0.3, 0.45, 0.52], [0, 1, 1, 0]);
-  const s2Y = useTransform(scrollYProgress, [0.22, 0.3, 0.45, 0.52], [50, 0, 0, -50]);
+  const s2Opacity = useTransform(scrollYProgress, [0.25, 0.30, 0.45, 0.50], [0, 1, 1, 0]);
+  const s2Y = useTransform(scrollYProgress, [0.25, 0.30, 0.45, 0.50], [50, 0, 0, -50]);
 
-  // --- Section 3 (58% to 82% Scroll Progress) ---
+  // --- Section 3 (Middle Second) ---
   // Renders right-aligned
-  const s3Opacity = useTransform(scrollYProgress, [0.52, 0.6, 0.76, 0.83], [0, 1, 1, 0]);
-  const s3Y = useTransform(scrollYProgress, [0.52, 0.6, 0.76, 0.83], [50, 0, 0, -50]);
+  const s3Opacity = useTransform(scrollYProgress, [0.55, 0.60, 0.75, 0.80], [0, 1, 1, 0]);
+  const s3Y = useTransform(scrollYProgress, [0.55, 0.60, 0.75, 0.80], [50, 0, 0, -50]);
 
   return (
     <div className="absolute inset-0 z-10 w-full h-full pointer-events-none">
@@ -28,15 +28,15 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
       {/* Section 1: Hero Centered */}
       <motion.div
         style={{ opacity: s1Opacity, y: s1Y }}
-        className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
+        className="absolute inset-0 flex flex-col items-center pt-[55vh] md:pt-[65vh] text-center px-4"
       >
-        <div className="max-w-4xl space-y-4 md:space-y-6">
+        <div className="max-w-4xl space-y-3 md:space-y-4">
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2, duration: 2 }}
-            className="text-5xl md:text-8xl font-black tracking-tight text-white uppercase drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+            className="text-4xl md:text-6xl font-black tracking-tight text-white uppercase drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
           >
             Maninder Karda
           </motion.h1>
@@ -44,7 +44,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2, duration: 2 }}
-            className="text-2xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 tracking-wide uppercase drop-shadow-md py-2"
+            className="text-lg md:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 tracking-wide uppercase drop-shadow-md py-2"
           >
             Data Analyst | 12+ Years of Experience
           </motion.h2>
