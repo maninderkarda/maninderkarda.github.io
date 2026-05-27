@@ -6,6 +6,7 @@ import Overlay from "./Overlay";
 
 export default function ScrollyCanvas() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
   const [loading, setLoading] = useState(true);
@@ -27,26 +28,31 @@ export default function ScrollyCanvas() {
   // Canvas cover-resize and redraw logic
   const renderCanvas = useCallback((frameIndex: number) => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const container = stickyRef.current;
+    if (!canvas || !container) return;
+    
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const img = imagesRef.current[frameIndex];
     if (!img || !img.complete) return;
 
-    // Set high-DPI sizing
+    // Set high-DPI sizing based on sticky container to avoid mobile URL bar resize jumps
     const pixelRatio = window.devicePixelRatio || 1;
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const width = container.clientWidth;
+    const height = container.clientHeight;
 
-    if (canvas.width !== width * pixelRatio || canvas.height !== height * pixelRatio) {
-      canvas.width = width * pixelRatio;
-      canvas.height = height * pixelRatio;
+    // Only resize and reset scale if dimensions have actually changed
+    if (canvas.width !== Math.floor(width * pixelRatio) || canvas.height !== Math.floor(height * pixelRatio)) {
+      canvas.width = Math.floor(width * pixelRatio);
+      canvas.height = Math.floor(height * pixelRatio);
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
+      
+      // Scaling must only happen when the canvas is resized (which resets the context)
+      // Otherwise on high-DPI screens, it scales exponentially every frame!
+      ctx.scale(pixelRatio, pixelRatio);
     }
-
-    ctx.scale(pixelRatio, pixelRatio);
 
     // object-fit: cover logic
     const canvasAspect = width / height;
@@ -65,7 +71,13 @@ export default function ScrollyCanvas() {
       drawX = (width - drawWidth) / 2;
     }
 
+    // Clear previous frame
     ctx.clearRect(0, 0, width, height);
+    
+    // Disable image smoothing for sharper rendering if needed, or keep it enabled
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+
     ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
   }, []);
 
@@ -104,20 +116,29 @@ export default function ScrollyCanvas() {
   useEffect(() => {
     if (loading) return;
 
+    let resizeTimer: NodeJS.Timeout;
+    
     const handleResize = () => {
-      const currentScroll = scrollYProgress.get();
-      const frameIndex = Math.min(
-        totalFrames - 1,
-        Math.floor(currentScroll * totalFrames)
-      );
-      renderCanvas(frameIndex);
+      // Debounce resize to prevent stuttering on mobile orientation change
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const currentScroll = scrollYProgress.get();
+        const frameIndex = Math.min(
+          totalFrames - 1,
+          Math.floor(currentScroll * totalFrames)
+        );
+        renderCanvas(frameIndex);
+      }, 100);
     };
 
     // Draw frame 0 immediately
     handleResize();
 
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(resizeTimer);
+    };
   }, [loading, renderCanvas, scrollYProgress]);
 
   // Hook scroll updates to redrawing specific canvas frames
@@ -158,7 +179,7 @@ export default function ScrollyCanvas() {
       )}
 
       {/* Sticky Scroll Container */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-zinc-950">
+      <div ref={stickyRef} className="sticky top-0 h-[100svh] w-full overflow-hidden bg-zinc-950">
         <canvas 
           ref={canvasRef} 
           className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none" 
