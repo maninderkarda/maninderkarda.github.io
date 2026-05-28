@@ -30,7 +30,7 @@ export default function ScrollyCanvas() {
     const canvas = canvasRef.current;
     const container = stickyRef.current;
     if (!canvas || !container) return;
-    
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -48,7 +48,7 @@ export default function ScrollyCanvas() {
       canvas.height = Math.floor(height * pixelRatio);
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
-      
+
       // Scaling must only happen when the canvas is resized (which resets the context)
       // Otherwise on high-DPI screens, it scales exponentially every frame!
       ctx.scale(pixelRatio, pixelRatio);
@@ -73,7 +73,7 @@ export default function ScrollyCanvas() {
 
     // Clear previous frame
     ctx.clearRect(0, 0, width, height);
-    
+
     // Disable image smoothing for sharper rendering if needed, or keep it enabled
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = "high";
@@ -90,7 +90,7 @@ export default function ScrollyCanvas() {
           const img = new Image();
           const frameNum = index.toString().padStart(2, "0");
           img.src = `/sequence/frame_${frameNum}_delay-0.067s.png`;
-          
+
           img.onload = () => {
             loadedCount++;
             setLoadProgress(Math.round((loadedCount / totalFrames) * 100));
@@ -117,7 +117,7 @@ export default function ScrollyCanvas() {
     if (loading) return;
 
     let resizeTimer: NodeJS.Timeout;
-    
+
     const handleResize = () => {
       // Debounce resize to prevent stuttering on mobile orientation change
       clearTimeout(resizeTimer);
@@ -159,7 +159,7 @@ export default function ScrollyCanvas() {
       {loading && (
         <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-zinc-950">
           <div className="text-center space-y-4 max-w-xs w-full px-6">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-2xl font-bold text-white tracking-widest uppercase font-sans"
@@ -167,7 +167,7 @@ export default function ScrollyCanvas() {
               Loading Experience
             </motion.h2>
             <div className="h-1.5 w-full bg-zinc-900 rounded-full overflow-hidden relative">
-              <motion.div 
+              <motion.div
                 className="absolute top-0 bottom-0 left-0 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-full"
                 style={{ width: `${loadProgress}%` }}
                 layoutId="loaderProgress"
@@ -180,17 +180,17 @@ export default function ScrollyCanvas() {
 
       {/* Sticky Scroll Container */}
       <div ref={stickyRef} className="sticky top-0 h-[100svh] w-full overflow-hidden bg-zinc-950">
-        <canvas 
-          ref={canvasRef} 
-          className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none" 
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
         />
-        
+
         {/* Parallax Overlay Text Sections */}
         {!loading && <Overlay scrollYProgress={scrollYProgress} />}
 
         {/* Scroll down mouse/bounce animation */}
         {!loading && (
-          <motion.div 
+          <motion.div
             style={{ opacity: indicatorOpacity, scale: indicatorScale, y: indicatorY }}
             className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center cursor-pointer pointer-events-none"
           >
@@ -199,14 +199,14 @@ export default function ScrollyCanvas() {
                 Scroll to Explore
               </span>
               <div className="w-6 h-10 border-2 border-zinc-500/50 rounded-full flex justify-center p-1.5">
-                <motion.div 
-                  animate={{ 
+                <motion.div
+                  animate={{
                     y: [0, 12, 0],
                   }}
-                  transition={{ 
-                    duration: 1.8, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
+                  transition={{
+                    duration: 1.8,
+                    repeat: Infinity,
+                    ease: "easeInOut"
                   }}
                   className="w-1 h-2 bg-gradient-to-b from-cyan-500 to-emerald-500 rounded-full"
                 />
