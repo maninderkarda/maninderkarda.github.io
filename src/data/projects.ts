@@ -44,7 +44,7 @@ export const projectsData: ProjectDetails[] = [
     category: "Business Intelligence",
     description: "Comprehensive dashboard connecting sales data with web traffic insights.",
     icon: TrendingUp,
-    tech: ["Power BI", "DAX", "Web Analytics"],
+    tech: ["Power BI", "DAX", "Web Analytics", "Excel"],
     link: "/projects/sunidra-mattresses",
     color: "from-blue-500/20 to-indigo-500/20 text-blue-400 border-blue-500/20",
     metric: "Data-Driven Decisions",
