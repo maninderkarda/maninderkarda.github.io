@@ -1,6 +1,7 @@
 import { projectsData } from "../../../data/projects";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { GithubIcon } from "../../../components/icons/GithubIcon";
 
 export function generateStaticParams() {
   return projectsData.map((project) => ({
@@ -48,7 +49,35 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           <p className="text-xl text-zinc-400 max-w-3xl leading-relaxed">
             {project.description}
           </p>
+          {project.githubLink && (
+            <div className="mt-8">
+              <a 
+                href={project.githubLink} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center px-6 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white font-semibold transition-colors duration-300 border border-white/10 hover:border-white/20"
+              >
+                <GithubIcon className="w-5 h-5 mr-3" />
+                View Repository on GitHub
+              </a>
+            </div>
+          )}
         </div>
+
+        {/* Summary */}
+        {project.summary && (
+          <div className="mb-16 glass-panel p-8 rounded-3xl border border-white/5 bg-zinc-900/40 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-[80px]"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-[80px]"></div>
+            <div className="relative z-10 space-y-6">
+              {project.summary.split('\n\n').map((paragraph, index) => (
+                <p key={index} className="text-zinc-300 leading-relaxed text-lg">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Full Description (STAR Method) */}
         {fullDescription && (
@@ -87,6 +116,32 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               height="100%"
               src={project.powerBiLink}
               frameBorder="0"
+              allowFullScreen={true}
+              className="absolute inset-0 pt-12"
+            ></iframe>
+          </div>
+        )}
+
+        {/* Excel Dashboard Container */}
+        {project.excelLink && (
+          <div className="relative w-full h-[80vh] min-h-[600px] rounded-3xl overflow-hidden glass-panel border border-white/10 shadow-2xl shadow-green-900/20 mt-12">
+            {/* Header for Dashboard */}
+            <div className="absolute top-0 left-0 w-full h-12 bg-zinc-900/80 backdrop-blur-md border-b border-white/5 flex items-center px-6 z-10">
+              <div className="flex space-x-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+              </div>
+              <span className="ml-4 text-xs font-semibold text-zinc-400 tracking-wider">Live Excel Dashboard</span>
+            </div>
+            
+            <iframe
+              title={project.title}
+              width="100%"
+              height="100%"
+              src={project.excelLink}
+              frameBorder="0"
+              scrolling="no"
               allowFullScreen={true}
               className="absolute inset-0 pt-12"
             ></iframe>

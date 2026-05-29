@@ -17,7 +17,7 @@ export default function Resume() {
     {
       company: "Supple Tek Industries Pvt. Ltd.",
       location: "Amritsar, PB, IN",
-      role: "Manager, IT Department",
+      role: "Manager, Analytics",
       timeline: "Oct 2022 - Present",
       color: "text-cyan-400 bg-cyan-400/10 border-cyan-400/20",
       glow: "group-hover:border-cyan-500/40 group-hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]",
@@ -25,7 +25,8 @@ export default function Resume() {
         "Developed 15+ advanced Power BI reports and dashboards for sales, production, stocks, accounts, and purchase analysis, reducing reporting time by 50%.",
         "Led initiatives to data accuracy and mitigate errors in company processes, resulting in approximately 50 lakhs annually savings.",
         "Discovered unsold stock discrepancies, leading to the recovery of stock worth 2.8 crores and implementation of stock management SOPs.",
-        "Utilized Python and PostgreSQL for API data retrieval, processing, and report generation, improving report generation efficiency by 40%."
+        "Utilized Python and PostgreSQL for API data retrieval, processing, and report generation, improving report generation efficiency by 40%.",
+        "Played a key role in the enterprise-wide SAP HANA implementation as the functional lead for the Sales and Distribution (SD) module."
       ]
     },
     {
@@ -100,10 +101,10 @@ export default function Resume() {
       <div className="absolute bottom-1/3 left-1/12 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        
+
         {/* Section Heading */}
         <div className="mb-16 flex items-center space-x-4">
-          <m.h2 
+          <m.h2
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -164,7 +165,7 @@ export default function Resume() {
         </div>
 
         {/* Download Resume Centered Button */}
-        <m.div 
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -178,7 +179,7 @@ export default function Resume() {
           >
             {/* Hover visual flash */}
             <div className="absolute inset-0 w-full h-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-            
+
             <Download className="w-5 h-5 transition-transform duration-300 group-hover:translate-y-0.5" />
             <span>Download Resume</span>
           </a>

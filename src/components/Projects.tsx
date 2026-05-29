@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { projectsData } from "../data/projects";
+import { GithubIcon } from "./icons/GithubIcon";
 
 export default function Projects() {
   return (
@@ -100,11 +101,24 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  {project.link !== "#" && (
-                    <div className="p-2 rounded-xl bg-zinc-900 group-hover:bg-zinc-800 text-zinc-400 group-hover:text-white border border-white/5 group-hover:border-white/10 transition-all duration-300 flex items-center justify-center flex-shrink-0">
-                      <ArrowUpRight className="w-4 h-4" />
-                    </div>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {project.githubLink && (
+                      <a 
+                        href={project.githubLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="p-2 rounded-xl bg-zinc-900 group-hover:bg-zinc-800 text-zinc-400 hover:text-white border border-white/5 hover:border-white/10 transition-all duration-300 flex items-center justify-center flex-shrink-0 z-10"
+                      >
+                        <GithubIcon className="w-4 h-4" />
+                      </a>
+                    )}
+                    {project.link !== "#" && (
+                      <div className="p-2 rounded-xl bg-zinc-900 group-hover:bg-zinc-800 text-zinc-400 group-hover:text-white border border-white/5 group-hover:border-white/10 transition-all duration-300 flex items-center justify-center flex-shrink-0">
+                        <ArrowUpRight className="w-4 h-4" />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             );

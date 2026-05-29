@@ -11,6 +11,9 @@ export interface ProjectDetails {
   color: string;
   metric: string;
   powerBiLink?: string;
+  excelLink?: string;
+  githubLink?: string;
+  summary?: string;
   fullDescription?: {
     situation: string;
     task: string;
@@ -31,6 +34,8 @@ export const projectsData: ProjectDetails[] = [
     color: "from-cyan-500/20 to-teal-500/20 text-cyan-400 border-cyan-500/20",
     metric: "20% Sales Growth",
     powerBiLink: "https://app.powerbi.com/view?r=eyJrIjoiZjFhZWUyM2MtM2FhMy00NzAyLTg3MmEtNThkODY2OGFjN2E4IiwidCI6IjE3NzgyZjMxLTJlMmQtNGZkNi05NThmLWNhNDY0NDE4NDVjNyJ9",
+    githubLink: "https://github.com/maninderkarda/Oppo_Mobiles_Sales_and_Stock_Analysis",
+    summary: "This Power BI project was developed for OPPO, one of the world’s leading smartphone brands known for its innovation in mobile technology, strong retail distribution network, and growing presence across India. Founded in 2004, OPPO operates in more than 60 countries and focuses on delivering smart devices with advanced camera technology and user-centric experiences.\n\nThe dashboard was designed to help business stakeholders monitor sales performance and distributor stock availability across Punjab. It provides year-over-year sales comparisons at region, city, ZSM, ASM, and distributor levels, along with detailed inventory tracking by mobile model. The report enables decision-makers to identify high-performing regions, monitor stock coverage, track distributor sales trends, and optimize inventory planning using interactive Power BI visuals and filters.",
     fullDescription: {
       situation: "OPPO Mobiles wanted clear visibility into both sales trends and stock levels to improve operational decisions.",
       task: "My job was to design a Power BI report that could break down sales and inventory in an actionable way.",
@@ -49,11 +54,33 @@ export const projectsData: ProjectDetails[] = [
     color: "from-blue-500/20 to-indigo-500/20 text-blue-400 border-blue-500/20",
     metric: "Data-Driven Decisions",
     powerBiLink: "https://app.powerbi.com/view?r=eyJrIjoiMjViZjk3Y2QtMWZlZS00OWIzLWEyZjQtNTA1NTlkZTIzNzQ3IiwidCI6IjE3NzgyZjMxLTJlMmQtNGZkNi05NThmLWNhNDY0NDE4NDVjNyJ9",
+    githubLink: "https://github.com/maninderkarda/Sales_Analysis_Sunidra-Mattresses",
+    summary: "This Power BI project was developed for Sunidra Mattresses, a premium mattress brand by Eastern Mattresses Pvt. Ltd., established in 1999 under Group Meeran. The company specializes in high-quality coir, foam, latex, and spring mattresses designed to enhance comfort and sleep wellness. Sunidra has built a strong presence in India through both retail and direct-to-consumer channels, focusing on innovation, product quality, and customer experience.\n\nThe dashboard was designed to provide a complete view of both sales performance and digital marketing effectiveness. The Sales Dashboard tracks revenue, profit margins, product performance, payment methods, and sales contribution across channels like Amazon, Flipkart, stores, and websites. The Web Marketing Dashboard analyzes customer engagement metrics such as sessions, bounce rates, exits, device usage, and traffic sources. Together, these interactive Power BI dashboards help business stakeholders identify high-performing products, optimize marketing channels, improve customer engagement, and support data-driven business decisions.",
     fullDescription: {
       situation: "Sunidra Mattresses needed to understand both sales performance and web engagement to improve strategy.",
       task: "I was responsible for building a comprehensive dashboard that connected sales data with web traffic insights.",
       action: "I created two Power BI dashboards—one breaking down sales by product, region, and channel, and another analyzing website sessions, bounce rates, and devices.",
       result: "The report empowered business leaders to optimize both sales strategy and digital marketing, leading to more data-driven decisions across both areas."
+    }
+  },
+  {
+    id: "ferns-and-petals-sales-analysis",
+    title: "Ferns and Petals Sales Analysis",
+    category: "Sales Analytics",
+    description: "Interactive Excel dashboard uncovering key insights on sales trends, customer behavior, and product performance for FNP.",
+    icon: BarChart3,
+    tech: ["Excel", "Pivot Tables", "Data Analysis", "Dashboards"],
+    link: "/projects/ferns-and-petals-sales-analysis",
+    color: "from-green-500/20 to-emerald-500/20 text-green-400 border-green-500/20",
+    metric: "10 Key Business Insights",
+    excelLink: "https://1drv.ms/x/c/d0adda4c336acabb/IQSEG1x3KrioSr6atAXN903WAe2xcERVqiyiPc3PM6drT5o?em=2&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edaebf=rslc0",
+    githubLink: "https://github.com/maninderkarda/Ferns-and-Petals-Sales-Analysis",
+    summary: "This Excel dashboard project was developed to analyze sales data from Ferns and Petals (FNP), a company specializing in sending gifts for occasions like Diwali, Raksha Bandhan, Holi, Valentine's Day, Birthdays, and Anniversaries. The dataset includes details about products, orders, customers, and dates.\n\nThe dashboard was designed to uncover key insights related to sales trends, customer behavior, and product performance. It addresses critical business questions, such as total revenue, average order and delivery times, monthly sales fluctuations in 2023, top revenue-generating products, and customer spending habits. Additionally, it provides visibility into top cities by order volume, delivery time impacts based on order quantity, and product popularity across different occasions.",
+    fullDescription: {
+      situation: "Ferns and Petals needed actionable insights from a dataset containing product, order, customer, and date details to improve their sales strategy and optimize customer satisfaction.",
+      task: "My task was to build a comprehensive Excel dashboard answering 10 key business questions, including revenue analysis, delivery time evaluation, monthly sales trends, and product popularity by occasion.",
+      action: "I cleaned the raw data and developed an interactive Excel dashboard with dynamic charts and pivot tables. I created specific visualizations to track top products, customer spending, top cities by orders, and revenue comparisons across different occasions.",
+      result: "The final dashboard provided stakeholders with clear, data-driven answers to all 10 key business questions, enabling more targeted marketing during specific occasions and better optimization of delivery processes."
     }
   },
   {
@@ -66,49 +93,5 @@ export const projectsData: ProjectDetails[] = [
     link: "#",
     color: "from-red-500/20 to-orange-500/20 text-red-400 border-red-500/20",
     metric: "2.8Cr Saved"
-  },
-  {
-    id: "hero-cycles-purchase-excellence",
-    title: "Hero Cycles Purchase Excellence Suite",
-    category: "Operations Analytics",
-    description: "Engineered critical BI reports optimizing production and materials procurement. Supported SAP-HANA data migration with 100% data integrity.",
-    icon: Layers,
-    tech: ["Power BI", "SAP-HANA", "Data Migration"],
-    link: "#",
-    color: "from-emerald-500/20 to-teal-500/20 text-emerald-400 border-emerald-500/20",
-    metric: "25% Process Efficiency"
-  },
-  {
-    id: "jp-morgan-client-account",
-    title: "JP Morgan Client Account Service Insights",
-    category: "Client Analytics",
-    description: "Built client service level agreement dashboards for JP Morgan (CAS), exceeding turnaround goals and earning Mphasis' Summit Individual Award.",
-    icon: Award,
-    tech: ["Power BI", "SQL Server", "Excel Analytics"],
-    link: "#",
-    color: "from-purple-500/20 to-pink-500/20 text-purple-400 border-purple-500/20",
-    metric: "50% Reporting Turnaround"
-  },
-  {
-    id: "logistics-delivery-adoptions",
-    title: "Logistics Delivery & Adoptions Engine",
-    category: "Supply Chain Optimization",
-    description: "Optimized sheet dispatch routines to raise transit accuracy by 20%. Commenced corporate transition to Power BI workflows, improving report agility by 40%.",
-    icon: Database,
-    tech: ["Google Sheets API", "App Script", "Power BI"],
-    link: "#",
-    color: "from-indigo-500/20 to-cyan-500/20 text-indigo-400 border-indigo-500/20",
-    metric: "+20% Delivery Accuracy"
-  },
-  {
-    id: "oppo-goal-scheme",
-    title: "Oppo Goal Scheme Management App",
-    category: "Retail Analytics",
-    description: "Designed and launched the Oppo Goal application to enhance distributor scheme transparency. Boosted channel sales volumes by 15% across PB region.",
-    icon: BarChart3,
-    tech: ["MIS Systems", "VBA & SQL", "Goal App", "Advanced Excel"],
-    link: "#",
-    color: "from-amber-500/20 to-orange-500/20 text-amber-400 border-amber-500/20",
-    metric: "15% Retailer Growth"
   }
 ];
