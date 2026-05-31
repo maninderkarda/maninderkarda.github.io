@@ -24,6 +24,26 @@ export interface ProjectDetails {
 
 export const projectsData: ProjectDetails[] = [
   {
+    id: "connect-broadband-churn-analysis",
+    title: "Connect Broadband - Churn & Call Center Analytics",
+    category: "Telecom Analytics",
+    description: "Power BI dashboard to help business stakeholders understand customer retention challenges and service performance.",
+    icon: Database,
+    tech: ["Power BI", "DAX", "Power Query", "Data Modeling", "Customer Churn Analysis", "Telecom Analytics", "Customer Retention", "Call Center Analytics", "KPI Development", "Data Visualization"],
+    link: "/projects/connect-broadband-churn-analysis",
+    color: "from-blue-500/20 to-sky-500/20 text-blue-400 border-blue-500/20",
+    metric: "Customer Retention",
+    powerBiLink: "https://app.powerbi.com/view?r=eyJrIjoiNjkzZjFlYjEtN2MxMC00OTQxLTgwNjktOGQ3NjRjZjNjOGViIiwidCI6IjE3NzgyZjMxLTJlMmQtNGZkNi05NThmLWNhNDY0NDE4NDVjNyJ9",
+    githubLink: "https://github.com/maninderkarda/Churn-Calls-Analysis-Connect_Broadband",
+    summary: "Developed a Power BI Customer Churn & Call Center Analytics Dashboard for Connect Broadband to help business stakeholders understand customer retention challenges and service performance. The solution provides insights into churn trends by customer demographics, tenure, payment methods, and internet services, while also tracking call center KPIs such as resolution rates, response times, agent performance, and customer satisfaction. The dashboard enables data-driven decisions to reduce customer churn, improve service quality, and enhance customer experience.",
+    fullDescription: {
+      situation: "Connect Broadband faced challenges in understanding customer churn patterns and evaluating customer support performance. Business teams lacked a centralized reporting solution to identify why customers were leaving and how effectively customer issues were being resolved.",
+      task: "My responsibility was to develop an analytical dashboard that would provide visibility into customer churn behavior and call center performance, helping stakeholders improve customer retention and service quality.",
+      action: "I designed and developed a two-page Power BI dashboard:\n\n### Churn Analysis Dashboard\n\n* Analyzed customer churn by tenure groups, age categories, payment methods, contact types, and internet services.\n* Tracked churn count, churn percentage, monthly revenue loss, and customer demographics.\n* Identified high-risk customer segments and services contributing to churn.\n\n### Call Analysis Dashboard\n\n* Monitored call center KPIs including average speed of answer, call volume, average talk duration, resolution rates, and unresolved cases.\n* Evaluated agent performance through satisfaction ratings, resolved calls, and handling efficiency.\n* Analyzed call topics to identify common customer issues and support trends.\n\nThe dashboard included interactive filtering by month and topic, enabling users to perform detailed operational analysis.",
+      result: "The solution provided management with a unified view of customer retention and support operations. Stakeholders could identify churn drivers, quantify revenue loss from customer attrition, monitor service quality, evaluate agent performance, and prioritize improvement initiatives. The dashboard supported data-driven decision-making aimed at reducing churn, improving customer satisfaction, and increasing operational efficiency."
+    }
+  },
+  {
     id: "oppo-mobiles",
     title: "Oppo Mobiles - Sales & Stock Analysis",
     category: "Business Intelligence",
@@ -64,6 +84,26 @@ export const projectsData: ProjectDetails[] = [
     }
   },
   {
+    id: "hero-cycles-manufacturing-analytics",
+    title: "Hero Cycles - Manufacturing Analytics Dashboard",
+    category: "Manufacturing Analytics",
+    description: "Developed a comprehensive Power BI Manufacturing Analytics Dashboard for Hero Cycles to monitor production performance.",
+    icon: Layers,
+    tech: ["Power BI", "DAX", "Power Query", "Data Modeling", "Manufacturing Analytics", "Production Planning", "Quality Management", "Machine Utilization Analysis", "KPI Development", "Data Visualization"],
+    link: "/projects/hero-cycles-manufacturing-analytics",
+    color: "from-purple-500/20 to-pink-500/20 text-purple-400 border-purple-500/20",
+    metric: "Operational Efficiency",
+    powerBiLink: "https://app.powerbi.com/view?r=eyJrIjoiMjM5YWEzMzMtYTUwOS00ODhhLWI5MGItZDQzOTBjMTQ1ZDk1IiwidCI6IjE3NzgyZjMxLTJlMmQtNGZkNi05NThmLWNhNDY0NDE4NDVjNyJ9",
+    githubLink: "https://github.com/maninderkarda/Manufacturing-Analysis-Hero-Cycles-",
+    summary: "Developed a comprehensive Power BI Manufacturing Analytics Dashboard for Hero Cycles to monitor production performance, quality metrics, and machine utilization across manufacturing operations. The solution provides real-time visibility into production output, downtime, efficiency, and defect rates through interactive dashboards. Business users can analyze performance by machine, supervisor, product, shift, and department, enabling faster decision-making, improved operational efficiency, reduced downtime, and enhanced product quality.",
+    fullDescription: {
+      situation: "Hero Cycles' manufacturing team relied on multiple reports and spreadsheets to track production output, machine performance, downtime, and quality metrics. This made it difficult for management to identify production bottlenecks, monitor machine efficiency, and quickly address quality issues.",
+      task: "My responsibility was to design and develop a centralized reporting solution that would provide stakeholders with a complete view of manufacturing operations, including production performance, quality management, machine utilization, and operational efficiency.",
+      action: "I developed a four-page Power BI dashboard consisting of:\n\n* **Overview Dashboard** to monitor production output, average daily production, downtime, efficiency rates, and defect percentages.\n* **Quality Management Dashboard** to analyze defects by supervisor, machine, and shift, helping identify quality-related issues.\n* **Machine Utilization Dashboard** to track machine efficiency, downtime, and operational performance across production lines.\n* **Detailed Analysis Dashboard** providing transaction-level visibility with drill-down capabilities for production, quality, and machine performance data.\n\nThe solution incorporated dynamic filters for Year, Month, Machine, Supervisor, Product Type, and Shift, allowing users to perform detailed root-cause analysis and operational monitoring.",
+      result: "The dashboard provided manufacturing leadership with a single source of truth for production and quality analytics. It enabled faster identification of underperforming machines, excessive downtime, and quality issues, helping stakeholders improve production planning, monitor operational efficiency, reduce defects, and make data-driven decisions across manufacturing operations."
+    }
+  },
+  {
     id: "ferns-and-petals-sales-analysis",
     title: "Ferns and Petals Sales Analysis",
     category: "Sales Analytics",
@@ -82,16 +122,5 @@ export const projectsData: ProjectDetails[] = [
       action: "I cleaned the raw data and developed an interactive Excel dashboard with dynamic charts and pivot tables. I created specific visualizations to track top products, customer spending, top cities by orders, and revenue comparisons across different occasions.",
       result: "The final dashboard provided stakeholders with clear, data-driven answers to all 10 key business questions, enabling more targeted marketing during specific occasions and better optimization of delivery processes."
     }
-  },
-  {
-    id: "supply-chain-unsold-stock",
-    title: "Supply Chain & Unsold Stock SOP Engine",
-    category: "Data Science & Auditing",
-    description: "Designed a PostgreSQL discrepancy discovery workflow, uncovering 2.8 crores in lost/unsold stock. Structured company-wide inventory tracking SOPs.",
-    icon: ShieldAlert,
-    tech: ["Python", "PostgreSQL", "Pandas", "SOPs"],
-    link: "#",
-    color: "from-red-500/20 to-orange-500/20 text-red-400 border-red-500/20",
-    metric: "2.8Cr Saved"
   }
 ];
